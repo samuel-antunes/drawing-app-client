@@ -27,7 +27,8 @@ type message = {
 
 function Page<FC>({ params }: { params: { room: string } }) {
   const [color, setColor] = useState<string>("#000000");
-  const { canvasRef, onMouseDown, clear } = useDraw(createLine);
+  const { canvasRef, handleMouseDown, handleTouchStart, clear } =
+    useDraw(createLine);
   const [messages, setMessages] = useState<message[]>([]);
   const [newMessage, setNewMessage] = useState("");
 
@@ -131,11 +132,20 @@ function Page<FC>({ params }: { params: { room: string } }) {
 
   return (
     <div className="w-[100%] h-[100%] md:h-screen md:w-screen bg-[#34373d] flex flex-col md:flex-row justify-center items-center">
-      <canvas
+      {/* <canvas
         ref={canvasRef}
         onMouseDown={onMouseDown}
         width={500}
         height={500}
+        className="border border-black rounded-md bg-white"
+      /> */}
+      <canvas
+        ref={canvasRef}
+        width={500}
+        height={500}
+        onMouseDown={handleMouseDown} // React prop for mouse events
+        onTouchStart={handleTouchStart} // React prop for touch events
+        // Additional props for mouseMove and mouseUp if handling drawing in React
         className="border border-black rounded-md bg-white"
       />
       <div className="flex flex-col p-4 md:pl-10 container w-[80%] md:w-[25%]">

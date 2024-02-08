@@ -77,11 +77,12 @@ const Home = () => {
             <div className="thin-blue-scrollbar border rounded-md border-black h-[200px] overflow-y-scroll">
               {existingRooms.map((room: string, idx: Number) => {
                 const isSelected = room === selectedRoomID;
+
                 return (
                   <div
                     key={room + String(idx)} // Always use a key when mapping over an array for React elements
-                    className={`bg-white ${
-                      isSelected ? "bg-blue-500" : ""
+                    className={` ${
+                      isSelected ? "bg-blue-500" : "bg-white"
                     } p-2 cursor-pointer`}
                     onClick={() => {
                       setSelectedRoomID(room);
