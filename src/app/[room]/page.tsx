@@ -10,7 +10,7 @@ import { drawLine } from "../../utils/drawLine";
 import { HexColorPicker } from "react-colorful";
 import { PageProps } from "../../../.next/types/app/layout";
 
-const socket = io(process.env.SERVER_URL || "http://localhost:3010");
+const socket = io("https://drawing-app-server-a4d25b6223c1.herokuapp.com/");
 
 interface pageProps {}
 

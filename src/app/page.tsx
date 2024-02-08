@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { useRouter } from "next/navigation";
 
-const socket = io(process.env.SERVER_URL || "http://localhost:3010/");
+const socket = io("https://drawing-app-server-a4d25b6223c1.herokuapp.com/");
 
 const Home = () => {
   const router = useRouter();
@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRooms = async () => {
       const response = await fetch(
-        `${process.env.SERVER_URL || "http://localhost:3010/"}rooms`,
+        "https://drawing-app-server-a4d25b6223c1.herokuapp.com/rooms",
         {
           method: "GET",
         }
