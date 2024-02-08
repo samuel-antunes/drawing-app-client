@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { useRouter } from "next/navigation";
 
-const socket = io("http://localhost:3010/");
+const socket = io(process.env.SERVER_URL || "http://localhost:3010/");
 
 const Home = () => {
   const router = useRouter();
@@ -19,9 +19,12 @@ const Home = () => {
 
   useEffect(() => {
     const fetchRooms = async () => {
-      const response = await fetch("http://localhost:3010/rooms", {
-        method: "GET",
-      });
+      const response = await fetch(
+        `${process.env.SERVER_URL || "http://localhost:3010/"}rooms`,
+        {
+          method: "GET",
+        }
+      );
       if (!response.ok) {
         console.log("Network error");
       }
